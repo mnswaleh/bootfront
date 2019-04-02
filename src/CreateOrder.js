@@ -1,47 +1,37 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import { Form, Row, Col, Button } from 'react-bootstrap'
-import MainClass from './main'
+import { addOrder } from "./actions/index"
 
-class CreateOrder extends Component {
+class Order extends Component {
     constructor() {
         super();
 
         this.state = {
-            data: {
+            parcel: {
                 "weight": 0,
                 "pickup_location": "nyeri",
                 "destination": "nyeri",
                 "recipient": "",
                 "parcel_details": ""
-            },
-            addState: false
+            }
         }
     }
 
-    addOrder = () => {
-        let default_params = new MainClass()
-        let request = new Request(default_params.serverName + 'parcels', default_params.request_headers('POST', this.state.data))
-
-        fetch(request)
-            .then(result => result.json())
-            .then(result => {
-                console.log(result)
-                alert(result.Message);
-                this.setState({
-                    addState: true,
-                })
-            })
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
+
     handleChange = (event) => {
-        let form_data = this.state.data
+        let form_data = this.state.parcel
         form_data[event.target.name] = event.target.value;
-        this.setState({ data: form_data });
+        this.setState({ parcel: form_data });
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.addOrder()
+        this.props.addOrder(this.state.parcel);
     }
 
     render() {
@@ -53,13 +43,13 @@ class CreateOrder extends Component {
                     <Form.Group as={Row} controlId="weight">
                         <Form.Label column sm={2}>Est Weight(Kg):</Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="number" name="weight" value={this.state.data['weight']} onChange={this.handleChange} />
+                            <Form.Control type="number" name="weight" value={this.state.parcel['weight']} onChange={this.handleChange} />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} controlId="pickup_location">
                         <Form.Label column sm={2}>Pick Up Location</Form.Label>
                         <Col sm={10}>
-                            <Form.Control as="select" name="pickup_location" value={this.state.data['pickup_location']} onChange={this.handleChange}>
+                            <Form.Control as="select" name="pickup_location" value={this.state.parcel['pickup_location']} onChange={this.handleChange}>
                                 <option value="nyeri">Nyeri</option>
                                 <option value="kisumu">Kisumu</option>
                                 <option value="mombasa">Mombasa</option>
@@ -77,7 +67,7 @@ class CreateOrder extends Component {
                     <Form.Group as={Row} controlId="destination">
                         <Form.Label column sm={2}>Delivery Location</Form.Label>
                         <Col sm={10}>
-                            <Form.Control as="select" name="destination" value={this.state.data['destination']} onChange={this.handleChange}>
+                            <Form.Control as="select" name="destination" value={this.state.parcel['destination']} onChange={this.handleChange}>
                                 <option value="nyeri">Nyeri</option>
                                 <option value="kisumu">Kisumu</option>
                                 <option value="mombasa">Mombasa</option>
@@ -95,13 +85,13 @@ class CreateOrder extends Component {
                     <Form.Group as={Row} controlId="recipient">
                         <Form.Label column sm={2}>Receiver</Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="text" name="recipient" value={this.state.data['recipient']} onChange={this.handleChange} />
+                            <Form.Control type="text" name="recipient" value={this.state.parcel['recipient']} onChange={this.handleChange} />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} controlId="parcel_details">
                         <Form.Label column sm={2}>Details</Form.Label>
                         <Col sm={10}>
-                            <Form.Control as="textarea" rows="3" name="parcel_details" value={this.state.data['parcel_details']} onChange={this.handleChange} />
+                            <Form.Control as="textarea" rows="3" name="parcel_details" value={this.state.parcel['parcel_details']} onChange={this.handleChange} />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row}>
@@ -115,5 +105,17 @@ class CreateOrder extends Component {
         );
     }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addOrder: parcel => dispatch(addOrder(parcel))
+    };
+}
+
+const mapStateToProps = state => {
+    return { parcels: state.parcels };
+};
+
+const CreateOrder = connect(mapStateToProps, mapDispatchToProps)(Order);
 
 export default CreateOrder;

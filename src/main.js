@@ -17,7 +17,7 @@ class MainClass {
         };
 
         myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NTQxMDI2OTEsIm5iZiI6MTU1NDEwMjY5MSwianRpIjoiNmE0NzFlNWMtOTIwMy00MDllLWFkY2YtYTJmMjQyMGRhZWZlIiwiZXhwIjoxNTU0MTQ1ODkxLCJpZGVudGl0eSI6Im1uc3dhbGVoQGdtYWlsLmNvbSIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.hZ7ChYMw1C4m__Z0-budLbrurhM2RJFBQrLBh8zp0gM');
+        myHeaders.append("Authorization", 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NTQxODk5MzUsIm5iZiI6MTU1NDE4OTkzNSwianRpIjoiYjJjNmJjMDEtYjkyMy00NDYyLTlhZTgtZjI2YWQ0YjNjNzY0IiwiZXhwIjoxNTU0MjMzMTM1LCJpZGVudGl0eSI6Im1uc3dhbGVoQGdtYWlsLmNvbSIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.c1aYroqROPN_ktdUGgA706K5RHZdZ5JWCt8g4HHAg50');
 
         if (header_method == "POST") {
             my_headers.body = JSON.stringify(header_body)

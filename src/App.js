@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
 import { Nav, NavItem } from 'react-bootstrap'
-import Orders_display from './Orders.jsx';
+import Orders_display from './Orders';
 import CreateOrder from './CreateOrder'
 
 class App extends Component {
