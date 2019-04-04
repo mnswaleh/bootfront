@@ -1,18 +1,19 @@
+import { fetch, Request } from 'cross-fetch'
 import MainClass from '../main'
 let default_params = new MainClass()
 
-export const fetchParcels = () => (dispatch) => {
-
-    let request = new Request(default_params.serverName + 'users/11/parcels', default_params.request_headers('GET'))
-    fetch(request)
+export const fetchParcels = () => async (dispatch) => {
+    let server_name = await default_params.serverName 
+    let request = new Request(server_name + 'users/11/parcels', default_params.request_headers('GET'))
+    await fetch(request)
         .then((result) => {
             if (result.status !== 200 && result.status !== 403) {
-                alert("login afresh");
+                alert("refresh page");
             } else {
                 return result.json()
             }
         })
-        .then(result => dispatch({ type: "FETCH_PARCEL", payload: result.Parcels }))
+        .then((result) => dispatch({ type: "FETCH_PARCEL", payload: result.Parcels }))
 };
 
 export const addOrder = (parcel_data) => (dispatch) => {
@@ -22,7 +23,7 @@ export const addOrder = (parcel_data) => (dispatch) => {
     fetch(request)
         .then(result => {
             if (result.status !== 201 && result.status !== 403) {
-                alert("Teken expired! login afresh");
+                alert("Token expired! login afresh");
             } else {
                 return result.json()
             }

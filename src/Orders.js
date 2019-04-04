@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { fetchParcels } from "./actions/index"
 
 
-class OrdersList extends Component {
+export class OrdersList extends Component {
   constructor() {
     super();
   }

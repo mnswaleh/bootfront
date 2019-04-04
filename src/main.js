@@ -1,23 +1,53 @@
+import { Headers, Request, fetch} from 'cross-fetch'
+
 class MainClass {
     constructor() {
         this.server = 'https://send-it-kibet.herokuapp.com/api/v2/'
+        this.user_token = ""
+    }
+
+    async userToken(done) {
+        if (this.user_token === "") {
+            let user = {
+                "email": "mnswaleh@gmail.com",
+                "password": "Ab243677"
+            }
+            
+            let request = new Request(this.server + 'auth/login', this.request_headers('POST', user))
+            
+            await fetch(request)
+                .then(result => {
+                    if (result.status !== 200 && result.status !== 403) {
+                        alert("server error!");
+                    } else {
+                        return result.json()
+                    }
+                })
+                .then(result => {
+                    localStorage.setItem('user_token', result.token)
+                    this.user_token = "result.token"
+                })
+        } else {
+            await this.userToken()
+        }
     }
 
     get serverName() {
+        this.userToken()
         return this.server
     }
 
     request_headers(header_method, header_body = "") {
         let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", 'Bearer ' + localStorage.getItem('user_token'));
+
         let my_headers = {
             method: header_method,
             headers: myHeaders,
             mode: 'cors',
             cache: 'default'
         };
-
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NTQxODk5MzUsIm5iZiI6MTU1NDE4OTkzNSwianRpIjoiYjJjNmJjMDEtYjkyMy00NDYyLTlhZTgtZjI2YWQ0YjNjNzY0IiwiZXhwIjoxNTU0MjMzMTM1LCJpZGVudGl0eSI6Im1uc3dhbGVoQGdtYWlsLmNvbSIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.c1aYroqROPN_ktdUGgA706K5RHZdZ5JWCt8g4HHAg50');
 
         if (header_method == "POST") {
             my_headers.body = JSON.stringify(header_body)

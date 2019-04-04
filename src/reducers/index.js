@@ -4,13 +4,13 @@ const initialState = {
 };
 
 let rootReducer = (state = initialState, action) => {
-    if (action.type === "FETCH_PARCEL") {
+    if (action !== undefined && action.type === "FETCH_PARCEL") {
         return { ...state, parcels: action.payload };
     }
-    else if (action.type === "ADD_PARCEL") {
+    else if (action !== undefined && action.type === "ADD_PARCEL") {
         return { ...state, parcel: action.payload };
-    }else{
-    return state
+    } else {
+        return state
     }
 };
 
