@@ -1,6 +1,11 @@
 language: node_js
 node_js:
   - "11.10.1"
+env:
+  global:
+    - CC_TEST_REPORTER_ID=acf7a56729d5e1bb4e5e808c27e610d8f29c401e254135ba08cd4cae72a29de3
+  matrix:
+    - REACT=16.7
 cache:
   directories:
     - node_modules
@@ -11,7 +16,7 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-  - npm test --coverage
+  - npm run test:coverage
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

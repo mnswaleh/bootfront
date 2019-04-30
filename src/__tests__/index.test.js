@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from "react-redux";
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { shallow } from 'enzyme';
+import { render, shallow } from 'enzyme';
 import CreateOrder from '../CreateOrder';
 import Orders from '../Orders';
 import App from '../App';
@@ -52,7 +52,7 @@ describe('Orders', () => {
 
 describe('CreateOrder', () => {
   it('Should render create order form', async (done) => {
-    const create_orders = await shallow(<Provider store={store}><CreateOrder /></Provider>)
+    const create_orders = await render(<Provider store={store}><CreateOrder /></Provider>)
     expect(create_orders).toMatchSnapshot();
     done()
   })

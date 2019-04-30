@@ -21,23 +21,243 @@ exports[`App Should render App 1`] = `
 `;
 
 exports[`CreateOrder Should render create order form 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "store": Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      },
-      "storeState": Array [],
-    }
-  }
->
-  <Connect(Order) />
-</ContextProvider>
+<div>
+  <h2
+    class="text-center"
+  >
+    Create Order
+  </h2>
+  <form
+    class=""
+  >
+    <div
+      class="form-group row"
+    >
+      <label
+        class="form-label col-form-label col-sm-2"
+      >
+        Est Weight(Kg):
+      </label>
+      <div
+        class="col-sm-10"
+      >
+        <input
+          class="form-control"
+          id="weight"
+          name="weight"
+          type="number"
+          value="0"
+        />
+      </div>
+    </div>
+    <div
+      class="form-group row"
+    >
+      <label
+        class="form-label col-form-label col-sm-2"
+      >
+        Pick Up Location
+      </label>
+      <div
+        class="col-sm-10"
+      >
+        <select
+          class="form-control"
+          id="pickup_location"
+          name="pickup_location"
+        >
+          <option
+            selected=""
+            value="nyeri"
+          >
+            Nyeri
+          </option>
+          <option
+            value="kisumu"
+          >
+            Kisumu
+          </option>
+          <option
+            value="mombasa"
+          >
+            Mombasa
+          </option>
+          <option
+            value="kitale"
+          >
+            Kitale
+          </option>
+          <option
+            value="eldoret"
+          >
+            Eldoret
+          </option>
+          <option
+            value="naivasha"
+          >
+            Naivasha
+          </option>
+          <option
+            value="kirinyaga"
+          >
+            Kirinyaga
+          </option>
+          <option
+            value="mwea"
+          >
+            Mwea
+          </option>
+          <option
+            value="narok"
+          >
+            Narok
+          </option>
+          <option
+            value="kiambu"
+          >
+            Kiambu
+          </option>
+          <option
+            value="nyahururu"
+          >
+            Nyahururu
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      class="form-group row"
+    >
+      <label
+        class="form-label col-form-label col-sm-2"
+      >
+        Delivery Location
+      </label>
+      <div
+        class="col-sm-10"
+      >
+        <select
+          class="form-control"
+          id="destination"
+          name="destination"
+        >
+          <option
+            selected=""
+            value="nyeri"
+          >
+            Nyeri
+          </option>
+          <option
+            value="kisumu"
+          >
+            Kisumu
+          </option>
+          <option
+            value="mombasa"
+          >
+            Mombasa
+          </option>
+          <option
+            value="kitale"
+          >
+            Kitale
+          </option>
+          <option
+            value="eldoret"
+          >
+            Eldoret
+          </option>
+          <option
+            value="naivasha"
+          >
+            Naivasha
+          </option>
+          <option
+            value="kirinyaga"
+          >
+            Kirinyaga
+          </option>
+          <option
+            value="mwea"
+          >
+            Mwea
+          </option>
+          <option
+            value="narok"
+          >
+            Narok
+          </option>
+          <option
+            value="kiambu"
+          >
+            Kiambu
+          </option>
+          <option
+            value="nyahururu"
+          >
+            Nyahururu
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      class="form-group row"
+    >
+      <label
+        class="form-label col-form-label col-sm-2"
+      >
+        Receiver
+      </label>
+      <div
+        class="col-sm-10"
+      >
+        <input
+          class="form-control"
+          id="recipient"
+          name="recipient"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="form-group row"
+    >
+      <label
+        class="form-label col-form-label col-sm-2"
+      >
+        Details
+      </label>
+      <div
+        class="col-sm-10"
+      >
+        <textarea
+          class="form-control"
+          id="parcel_details"
+          name="parcel_details"
+          rows="3"
+        />
+      </div>
+    </div>
+    <div
+      class="form-group row"
+    >
+      <div
+        class="col-sm-6"
+      />
+      <div
+        class="col-sm-6"
+      >
+        <button
+          class="btn btn-primary"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
 `;
 
 exports[`Orders Should render Orders 1`] = `
