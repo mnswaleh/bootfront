@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "npm test -- --watch",
+    "test:coverage": "jest --coverage --colors",
     "dev": "webpack-dev-server --hot --inline",
     "build": "webpack --config webpack.prod.config.js --mode production",
     "start": "npm run build && NODE_ENV=production node server.js"
@@ -82,13 +83,10 @@
       "enzyme-to-json/serializer"
     ],
     "setupFilesAfterEnv": [
-      "<rootDir>src/setupTests.js", "jest-localstorage-mock"
+      "<rootDir>src/setupTests.js",
+      "jest-localstorage-mock"
     ],
-    "collectCoverage": true,
-    "coverageReporters": [
-      "json",
-      "html"
-    ]
+    "collectCoverage": true
   },
   "setupTestFrameworkScriptFile": "PATH_TO_YOUR_FILE"
 }

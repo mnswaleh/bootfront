@@ -12,7 +12,6 @@ class App extends Component {
                     <Nav fill variant="pills" className="justify-content-center" activeKey="/" onSelect={selectedKey => alert(`selected ${selectedKey}`)}>
                         <NavItem><NavLink to={'/'}>Orders</NavLink></NavItem>
                         <NavItem><NavLink to={'/createorder'}> Create Order</NavLink></NavItem>
-                        <NavItem><NavLink to={'/'}> Update Order</NavLink></NavItem>
                     </Nav>
                     <Switch>
                         <Route exact path='/' component={Orders}/>
